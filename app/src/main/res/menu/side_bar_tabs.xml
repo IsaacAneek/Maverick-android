@@ -2,20 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/kanban_board"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Item" />
+        android:title="Kanban Board" />
     <item
+        android:id="@+id/deep_work"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Item" />
+        android:title="Deep Work" />
     <item
+        android:id="@+id/buffets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Item" />
+        android:title="Buffets 5-25 Rule" />
     <item
+        android:id="@+id/pomodoro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Item" />
-    <item android:title="Item" />
+        android:title="Pomodoro" />
+    <item
+        android:id="@+id/eisenhower_matrix"
+        android:title="Eisenhower Matrix" />
 </menu>
