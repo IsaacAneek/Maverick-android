@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,27 +26,33 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:background="#FFEFEF">
-
-                <TextView
-                    android:id="@+id/title_do_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Do First"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingBottom="4dp" />
-
-                <Button
-                    android:id="@+id/btn_add_do_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add task" />
+                android:padding="8dp">
 
                 <!-- Container where task rows will live -->
                 <LinearLayout
-                    android:id="@+id/container_do_first_tasks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Do First"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:background="#00FFFFFF"
+                        android:src="@android:drawable/ic_menu_add" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/do_first_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -55,8 +62,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingVertical="4dp">
 
                         <CheckBox
@@ -69,16 +76,17 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Sample task"
-                            android:paddingHorizontal="4dp" />
+                            android:paddingHorizontal="4dp"
+                            android:text="Sample task" />
 
                         <ImageButton
-                            android:id="@+id/btn_play_do_first_1"
+                            android:id="@+id/imageButton6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_play"   <!-- your play icon -->
-                        android:contentDescription="Play"
-                        android:background="?attr/selectableItemBackgroundBorderless" />
+                            android:layout_weight=".1"
+                            android:background="#00FFFFFF"
+                            android:src="@android:drawable/ic_media_play" />
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -86,65 +94,34 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/block_schedule"
+                android:id="@+id/block_do_first"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:background="#EFF7FF">
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/title_schedule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Schedule"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingBottom="4dp" />
-
-                <Button
-                    android:id="@+id/btn_add_schedule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add task" />
-
+                <!-- Container where task rows will live -->
                 <LinearLayout
-                    android:id="@+id/container_schedule_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="8dp">
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="4dp">
+                        android:layout_weight="1"
+                        android:text="Schedule"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-                        <CheckBox
-                            android:id="@+id/chk_schedule_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/txt_schedule_1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Sample task"
-                            android:paddingHorizontal="4dp" />
-
-                        <ImageButton
-                            android:id="@+id/btn_play_schedule_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_play"
-                            android:contentDescription="Play"
-                            android:background="?attr/selectableItemBackgroundBorderless" />
-                    </LinearLayout>
-
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:background="#00FFFFFF"
+                        android:src="@android:drawable/ic_menu_add" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -159,133 +136,70 @@
             android:weightSum="2">
 
             <LinearLayout
-                android:id="@+id/block_delegate"
-                android:layout_width="0dp"
+                android:id="@+id/block_do_first"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:background="#F5FFE8">
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/title_delegate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Delegate"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingBottom="4dp" />
-
-                <Button
-                    android:id="@+id/btn_add_delegate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add task" />
-
+                <!-- Container where task rows will live -->
                 <LinearLayout
-                    android:id="@+id/container_delegate_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="8dp">
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="4dp">
+                        android:layout_weight="1"
+                        android:text="Delegate"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-                        <CheckBox
-                            android:id="@+id/chk_delegate_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/txt_delegate_1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Sample task"
-                            android:paddingHorizontal="4dp" />
-
-                        <ImageButton
-                            android:id="@+id/btn_play_delegate_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_play"
-                            android:contentDescription="Play"
-                            android:background="?attr/selectableItemBackgroundBorderless" />
-                    </LinearLayout>
-
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:background="#00FFFFFF"
+                        android:src="@android:drawable/ic_menu_add" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/block_eliminate"
-                android:layout_width="0dp"
+                android:id="@+id/block_do_first"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:background="#FFF3E8">
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/title_eliminate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Eliminate"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingBottom="4dp" />
-
-                <Button
-                    android:id="@+id/btn_add_eliminate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add task" />
-
+                <!-- Container where task rows will live -->
                 <LinearLayout
-                    android:id="@+id/container_eliminate_tasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="8dp">
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="4dp">
+                        android:layout_weight="1"
+                        android:text="Eliminate"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-                        <CheckBox
-                            android:id="@+id/chk_eliminate_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/txt_eliminate_1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Sample task"
-                            android:paddingHorizontal="4dp" />
-
-                        <ImageButton
-                            android:id="@+id/btn_play_eliminate_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_play"
-                            android:contentDescription="Play"
-                            android:background="?attr/selectableItemBackgroundBorderless" />
-                    </LinearLayout>
-
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:background="#00FFFFFF"
+                        android:src="@android:drawable/ic_menu_add" />
                 </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
 
     </LinearLayout>
