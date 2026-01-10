@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +25,17 @@ public class EisenhowerMatrixFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private LinearLayout doFirstList;
+    private LinearLayout scheduleList;
+    private LinearLayout delegateList;
+    private LinearLayout eliminateList;
+
+    private ImageButton btnAddDoFirst;
+    private ImageButton btnAddSchedule;
+    private ImageButton btnAddDelegate;
+    private ImageButton btnAddEliminate;
+    //private LayoutInflater inflater;
 
     public EisenhowerMatrixFragment() {
         // Required empty public constructor
@@ -58,7 +71,43 @@ public class EisenhowerMatrixFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_eisenhower_matrix, container, false);
+        View view = inflater.inflate(R.layout.fragment_eisenhower_matrix, container, false);
+
+        handleDoFirstBlock(view);
+        handleDelegateBlock(view);
+        handleEliminateBlock(view);
+        handleScheduleBlock(view);
+
+        return view;
+    }
+
+    private void handleDoFirstBlock(View view) {
+        doFirstList = view.findViewById(R.id.do_first_list);
+        btnAddDoFirst = view.findViewById(R.id.button_add_do_first);
+        btnAddDoFirst.setOnClickListener(v -> addNewRow(doFirstList));
+    }
+
+    private void handleScheduleBlock(View view) {
+        scheduleList = view.findViewById(R.id.schedule_list);
+        btnAddSchedule = view.findViewById(R.id.button_add_schedule);
+        btnAddSchedule.setOnClickListener(v -> addNewRow(scheduleList));
+    }
+
+    private void handleDelegateBlock(View view) {
+        delegateList = view.findViewById(R.id.delegate_list);
+        btnAddDelegate = view.findViewById(R.id.button_add_delegate);
+        btnAddDelegate.setOnClickListener(v -> addNewRow(delegateList));
+    }
+
+    private void handleEliminateBlock(View view) {
+        eliminateList = view.findViewById(R.id.eliminate_list);
+        btnAddEliminate = view.findViewById(R.id.button_add_eliminate);
+        btnAddEliminate.setOnClickListener(v -> addNewRow(eliminateList));
+    }
+
+    private void addNewRow(LinearLayout list) {
+        LayoutInflater inflater = LayoutInflater.from(requireContext());
+        View row = inflater.inflate(R.layout.eisenhower_row, list, false);
+        list.addView(row);
     }
 }

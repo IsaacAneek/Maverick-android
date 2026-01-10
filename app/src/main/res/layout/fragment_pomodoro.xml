@@ -21,7 +21,6 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="25"
-            android:textColor="@color/teal"
             android:textSize="60sp" />
 
         <TextView
@@ -31,7 +30,6 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="min left"
-            android:textColor="@color/teal"
             android:textSize="24sp" />
 
         <ImageButton
@@ -40,8 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#00FFFFFF"
-            android:src="@android:drawable/ic_media_play"
-            app:tint="@color/teal" />
+            android:src="@android:drawable/ic_media_play" />
     </LinearLayout>
 
     <ProgressBar

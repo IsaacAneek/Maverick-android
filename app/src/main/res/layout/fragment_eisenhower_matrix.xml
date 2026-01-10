@@ -19,16 +19,14 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <!-- (0,0) Do First -->
             <LinearLayout
-                android:id="@+id/block_do_first"
+                android:id="@+id/do_first_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <!-- Container where task rows will live -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,7 +41,7 @@
                         android:textStyle="bold" />
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/button_add_do_first"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight=".2"
@@ -58,7 +56,6 @@
                     android:orientation="vertical"
                     android:paddingTop="8dp">
 
-                    <!-- Example initial task row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -94,7 +91,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/block_do_first"
+                android:id="@+id/schedule_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -116,13 +113,19 @@
                         android:textStyle="bold" />
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/button_add_schedule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight=".2"
                         android:background="#00FFFFFF"
                         android:src="@android:drawable/ic_menu_add" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/schedule_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
 
             </LinearLayout>
 
@@ -136,7 +139,7 @@
             android:weightSum="2">
 
             <LinearLayout
-                android:id="@+id/block_do_first"
+                android:id="@+id/delegate_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -158,7 +161,7 @@
                         android:textStyle="bold" />
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/button_add_delegate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight=".2"
@@ -166,10 +169,16 @@
                         android:src="@android:drawable/ic_menu_add" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/delegate_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/block_do_first"
+                android:id="@+id/eliminate_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -191,13 +200,19 @@
                         android:textStyle="bold" />
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/button_add_eliminate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight=".2"
                         android:background="#00FFFFFF"
                         android:src="@android:drawable/ic_menu_add" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/eliminate_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
 
             </LinearLayout>
         </LinearLayout>

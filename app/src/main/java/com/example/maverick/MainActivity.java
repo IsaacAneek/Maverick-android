@@ -1,8 +1,12 @@
 package com.example.maverick;
 
 import android.os.Bundle;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView side_bar;
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
-
         side_bar.setNavigationItemSelectedListener(this);
 
     }
@@ -65,6 +69,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, pomodoroFragment).commit();
             side_bar.setCheckedItem(id);
         }
+        else if(id == R.id.eisenhower_matrix) {
+            EisenhowerMatrixFragment eisenhowerMatrixFragment = new EisenhowerMatrixFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, eisenhowerMatrixFragment).commit();
+            side_bar.setCheckedItem(id);
+        }
+
 
 
         drawerLayout.closeDrawer(GravityCompat.START);
