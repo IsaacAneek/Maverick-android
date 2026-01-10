@@ -5,11 +5,11 @@
             android:shape="ring"
             android:innerRadiusRatio="2.5"
             android:thicknessRatio="30.0"
-            android:useLevel="false">
+            android:useLevel="true">
             <gradient
-                android:centerColor="@color/black"
-                android:endColor="@color/gray"
-                android:startColor="@color/gray"/>
+                android:centerColor="?attr/colorPrimary"
+                android:endColor="?attr/colorPrimary"
+                android:startColor="?attr/colorPrimary"/>
         </shape>
     </item>
 </layer-list>

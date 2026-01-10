@@ -49,6 +49,8 @@
         android:alpha="1"
         android:background="@drawable/gray_progressbar"
         android:indeterminate="false"
+        android:max="25"
+        android:progress="25"
         android:progressDrawable="@drawable/blue_progressbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
