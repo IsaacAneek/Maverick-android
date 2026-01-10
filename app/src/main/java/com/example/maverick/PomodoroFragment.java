@@ -8,6 +8,8 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,15 +21,21 @@ import android.widget.TextView;
  */
 public class PomodoroFragment extends Fragment {
 
-    private static final int TOTAL_TIME_SECONDS = 25;   // change to 25 * 60 for 25 minutes
+    private static final int DEFAULT_TIME_SECONDS = 25;
 
     private TextView tvTime;
     private TextView tvLabel;
     private ImageButton btnPlay;
     private ProgressBar progressBar;
 
+    private EditText focusInput;
+    private EditText breakInput;
+    private Button focusButton;
+    private Button breakButton;
+
     private CountDownTimer countDownTimer;
     private boolean isRunning = false;
+    private int currentTotalSeconds = DEFAULT_TIME_SECONDS;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,7 +47,6 @@ public class PomodoroFragment extends Fragment {
     private String mParam2;
 
     public PomodoroFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -81,30 +88,80 @@ public class PomodoroFragment extends Fragment {
         btnPlay = view.findViewById(R.id.imageButton5);
         progressBar = view.findViewById(R.id.progressBar);
 
-        // Initial state
-        tvTime.setText(String.valueOf(TOTAL_TIME_SECONDS));
+        focusInput = view.findViewById(R.id.focus_text_edit);
+        breakInput = view.findViewById(R.id.break_text_edit);
+        focusButton = view.findViewById(R.id.focus_button);
+        breakButton = view.findViewById(R.id.break_button);
+
+        tvTime.setText(String.valueOf(DEFAULT_TIME_SECONDS));
         tvLabel.setText("sec left");
-        progressBar.setMax(TOTAL_TIME_SECONDS);
-        progressBar.setProgress(TOTAL_TIME_SECONDS);
+        progressBar.setMax(DEFAULT_TIME_SECONDS);
+        progressBar.setProgress(DEFAULT_TIME_SECONDS);
+
+        focusButton.setOnClickListener(v -> {
+            int seconds = getSecondsFromEdit(focusInput);
+            if (seconds <= 0) {
+                focusInput.setError("Enter a positive number");
+                return;
+            }
+            startTimer(seconds);
+        });
+
+        breakButton.setOnClickListener(v -> {
+            int seconds = getSecondsFromEdit(breakInput);
+            if (seconds <= 0) {
+                breakInput.setError("Enter a positive number");
+                return;
+            }
+            startTimer(seconds);
+        });
 
         btnPlay.setOnClickListener(v -> {
             if (!isRunning) {
-                startTimer();
+                startTimer(currentTotalSeconds);
             }
         });
 
         return view;
     }
 
-    private void startTimer() {
+    private int getSecondsFromEdit(EditText editText) {
+        String text = editText.getText().toString().trim();
+        if (text.isEmpty()) {
+            return 0;
+        }
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    private void startTimer(int totalSeconds) {
+        // Cancel any existing timer
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+
+        currentTotalSeconds = totalSeconds;
         isRunning = true;
+
         btnPlay.setEnabled(false);
-        countDownTimer = new CountDownTimer(TOTAL_TIME_SECONDS * 1000L, 1000L) {
+        focusButton.setEnabled(false);
+        breakButton.setEnabled(false);
+
+        // Set initial UI state
+        tvTime.setText(String.valueOf(totalSeconds));
+        tvLabel.setText("sec left");
+        progressBar.setMax(totalSeconds);
+        progressBar.setProgress(totalSeconds);
+
+        countDownTimer = new CountDownTimer(totalSeconds * 1000L, 1000L) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int secondsLeft = (int) (millisUntilFinished / 1000L);
                 tvTime.setText(String.valueOf(secondsLeft));
-                progressBar.setProgress(secondsLeft, true);
+                progressBar.setProgress(secondsLeft);
             }
 
             @Override
@@ -112,16 +169,11 @@ public class PomodoroFragment extends Fragment {
                 tvTime.setText("0");
                 progressBar.setProgress(0);
                 isRunning = false;
+
                 btnPlay.setEnabled(true);
+                focusButton.setEnabled(true);
+                breakButton.setEnabled(true);
             }
         }.start();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
     }
 }
