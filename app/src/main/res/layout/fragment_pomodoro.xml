@@ -7,11 +7,52 @@
     android:layout_height="match_parent"
     tools:context=".PomodoroFragment" >
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pomodoro"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="@+id/progressBar">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="25"
+            android:textColor="@color/teal"
+            android:textSize="60sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="min left"
+            android:textColor="@color/teal"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#00FFFFFF"
+            android:src="@android:drawable/ic_media_play"
+            app:tint="@color/teal" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="370dp"
+        android:layout_height="370dp"
+        android:alpha="1"
+        android:background="@drawable/gray_progressbar"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/blue_progressbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
