@@ -138,7 +138,6 @@ public class PomodoroFragment extends Fragment {
     }
 
     private void startTimer(int totalSeconds) {
-        // Cancel any existing timer
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
@@ -150,7 +149,6 @@ public class PomodoroFragment extends Fragment {
         focusButton.setEnabled(false);
         breakButton.setEnabled(false);
 
-        // Set initial UI state
         tvTime.setText(String.valueOf(totalSeconds));
         tvLabel.setText("sec left");
         progressBar.setMax(totalSeconds);

@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +62,41 @@ public class KanbanBoardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kanban_board, container, false);
+        View root = inflater.inflate(R.layout.fragment_kanban_board, container, false);
+
+        EditText input = root.findViewById(R.id.enter_new_task_text);
+        ImageButton addButton = root.findViewById(R.id.add_new_list_button);
+        LinearLayout listContainer = root.findViewById(R.id.task_list);
+
+        addButton.setOnClickListener(v -> {
+            String title = input.getText().toString().trim();
+            if (!title.isEmpty()) {
+                View row = inflater.inflate(R.layout.kanban_list, listContainer, false);
+                TextView titleView = row.findViewById(R.id.textView3);
+                titleView.setText(title);
+                setupList(row, inflater);
+                listContainer.addView(row);
+                input.setText("");
+            }
+        });
+
+        return root;
+    }
+
+    private void setupList(View listView, LayoutInflater inflater) {
+        ImageButton addTaskButton = listView.findViewById(R.id.add_new_task_button);
+        LinearLayout taskList = listView.findViewById(R.id.task_list);
+
+        addTaskButton.setOnClickListener(v -> {
+            View row = inflater.inflate(R.layout.eisenhower_row, taskList, false);
+            taskList.addView(row);
+        });
+    }
+
+
+    private void addNewList(LinearLayout list) {
+        LayoutInflater inflater = LayoutInflater.from(requireContext());
+        View row = inflater.inflate(R.layout.kanban_list, list, false);
+        list.addView(row);
     }
 }
