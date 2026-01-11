@@ -19,6 +19,7 @@ import android.widget.TextView;
  */
 public class KanbanBoardFragment extends Fragment {
 
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,10 +66,10 @@ public class KanbanBoardFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_kanban_board, container, false);
 
         EditText input = root.findViewById(R.id.enter_new_task_text);
-        ImageButton addButton = root.findViewById(R.id.add_new_list_button);
+        ImageButton addNewTaskListButton = root.findViewById(R.id.add_new_list_button);
         LinearLayout listContainer = root.findViewById(R.id.task_list);
 
-        addButton.setOnClickListener(v -> {
+        addNewTaskListButton.setOnClickListener(v -> {
             String title = input.getText().toString().trim();
             if (!title.isEmpty()) {
                 View row = inflater.inflate(R.layout.kanban_list, listContainer, false);
@@ -84,19 +85,12 @@ public class KanbanBoardFragment extends Fragment {
     }
 
     private void setupList(View listView, LayoutInflater inflater) {
-        ImageButton addTaskButton = listView.findViewById(R.id.add_new_task_button);
+        ImageButton addNewTaskButton = listView.findViewById(R.id.add_new_task_button);
         LinearLayout taskList = listView.findViewById(R.id.task_list);
 
-        addTaskButton.setOnClickListener(v -> {
+        addNewTaskButton.setOnClickListener(v -> {
             View row = inflater.inflate(R.layout.eisenhower_row, taskList, false);
             taskList.addView(row);
         });
-    }
-
-
-    private void addNewList(LinearLayout list) {
-        LayoutInflater inflater = LayoutInflater.from(requireContext());
-        View row = inflater.inflate(R.layout.kanban_list, list, false);
-        list.addView(row);
     }
 }
