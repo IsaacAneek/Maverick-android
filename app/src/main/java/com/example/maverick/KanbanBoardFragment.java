@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link KanbanBoardFragment#newInstance} factory method to
@@ -90,7 +92,19 @@ public class KanbanBoardFragment extends Fragment {
 
         addNewTaskButton.setOnClickListener(v -> {
             View row = inflater.inflate(R.layout.eisenhower_row, taskList, false);
+            ImageButton playButton = row.findViewById(R.id.imageButton3);
+            TextView taskText = row.findViewById(R.id.textView);
+
+            playButton.setOnClickListener(v2 -> openPomodoro(taskText.getText().toString()));
             taskList.addView(row);
         });
+    }
+
+    private void openPomodoro(String taskTitle) {
+        PomodoroFragment fragment = PomodoroFragment.newInstance(taskTitle, null);
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .commit();
     }
 }

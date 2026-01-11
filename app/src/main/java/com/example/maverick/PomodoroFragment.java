@@ -98,6 +98,10 @@ public class PomodoroFragment extends Fragment {
         progressBar.setMax(DEFAULT_TIME_SECONDS);
         progressBar.setProgress(DEFAULT_TIME_SECONDS);
 
+        TextView task_name = view.findViewById(R.id.pomodoro_task_name);
+        task_name.setText(mParam1);
+
+
         focusButton.setOnClickListener(v -> {
             int seconds = getSecondsFromEdit(focusInput);
             if (seconds <= 0) {
