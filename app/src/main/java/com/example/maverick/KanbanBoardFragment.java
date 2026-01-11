@@ -125,14 +125,14 @@ public class KanbanBoardFragment extends Fragment {
                         View taskView = inflater.inflate(
                                 R.layout.eisenhower_row, taskList, false);
 
-                        TextView taskText = taskView.findViewById(R.id.textView);
+                        EditText taskText = taskView.findViewById(R.id.textView);
                         ImageButton playButton =
                                 taskView.findViewById(R.id.imageButton3);
 
                         taskText.setText(taskTitle);
 
                         playButton.setOnClickListener(v ->
-                                openPomodoro(taskTitle));
+                                openPomodoro(taskText.getText().toString()));
 
                         taskList.addView(taskView);
                     }
@@ -184,7 +184,7 @@ public class KanbanBoardFragment extends Fragment {
 
             View row = inflater.inflate(R.layout.eisenhower_row, taskList, false);
             ImageButton playButton = row.findViewById(R.id.imageButton3);
-            TextView taskText = row.findViewById(R.id.textView);
+            EditText taskText = row.findViewById(R.id.textView);
 
             taskText.setText("New Task");
 
