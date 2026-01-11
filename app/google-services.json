@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873208309010",
+    "project_id": "maverick-android-f9433",
+    "storage_bucket": "maverick-android-f9433.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873208309010:android:b4acfeb6dc0ce7515bbfcb",
+        "android_client_info": {
+          "package_name": "com.example.maverick"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG0vUfNjsESF1oqV8qRMcBM527UlDqLdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

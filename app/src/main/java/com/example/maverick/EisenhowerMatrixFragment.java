@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link EisenhowerMatrixFragment#newInstance} factory method to
@@ -36,6 +39,10 @@ public class EisenhowerMatrixFragment extends Fragment {
     private ImageButton btnAddDelegate;
     private ImageButton btnAddEliminate;
     //private LayoutInflater inflater;
+
+    private FirebaseDatabase database;
+    private DatabaseReference eisenhowerRef;
+
 
     public EisenhowerMatrixFragment() {
         // Required empty public constructor
@@ -66,6 +73,13 @@ public class EisenhowerMatrixFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        database = FirebaseDatabase.getInstance(
+                "https://maverick-android-f9433-default-rtdb.asia-southeast1.firebasedatabase.app"
+        );
+
+        eisenhowerRef = database.getReference("eisenhowerMatrix");
+
     }
 
     @Override
