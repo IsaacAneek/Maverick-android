@@ -94,7 +94,7 @@ public class PomodoroFragment extends Fragment {
         breakButton = view.findViewById(R.id.break_button);
 
         tvTime.setText(String.valueOf(DEFAULT_TIME_SECONDS));
-        tvLabel.setText("sec left");
+        tvLabel.setText("min left");
         progressBar.setMax(DEFAULT_TIME_SECONDS);
         progressBar.setProgress(DEFAULT_TIME_SECONDS);
 
@@ -154,7 +154,7 @@ public class PomodoroFragment extends Fragment {
         breakButton.setEnabled(false);
 
         tvTime.setText(String.valueOf(totalSeconds));
-        tvLabel.setText("sec left");
+        tvLabel.setText("min left");
         progressBar.setMax(totalSeconds);
         progressBar.setProgress(totalSeconds);
 
